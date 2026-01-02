@@ -20,6 +20,7 @@ namespace CNC_Drawer_UI
         Help help_form;
 
         float zoom = 1.0f;
+        int last_zoom = 1;
         Image img;
 
         public Main()
@@ -50,6 +51,9 @@ namespace CNC_Drawer_UI
                     path = fileDialog.FileName;
                 }
             }
+
+            last_zoom = 1;
+            numUpDownZoom.Value = 1;
 
             // Image proccesing and display.
             SendRequestAndTakeImageAsync();
@@ -84,12 +88,6 @@ namespace CNC_Drawer_UI
 
         #region -==- numUpDownZoom Events -==-
 
-        // If zoom value changed.
-        private void numUpDownZoom_ValueChanged(object sender, EventArgs e)
-        {
-            SendRequestAndTakeImageAsync();
-        }
-
         // If key pressed in zoom.
         private void numUpDownZoom_KeyDown(object sender, KeyEventArgs e)
         {
@@ -105,12 +103,6 @@ namespace CNC_Drawer_UI
         #endregion
 
         #region -==- numUpDownFilter events -==-
-
-        // If filter value changed.
-        private void numUpDownFilter_ValueChanged(object sender, EventArgs e)
-        {
-            SendRequestAndTakeImageAsync();
-        }
 
         // If key pressed in filter.
         private void numUpDownFilter_KeyDown(object sender, KeyEventArgs e)
@@ -188,9 +180,10 @@ namespace CNC_Drawer_UI
             if (Encoding.UTF8.GetString(image) == "0")
             {
                 MessageBox.Show("Error: Image is too big", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                numUpDownZoom.Value = numUpDownZoom.Value - 1;
+                numUpDownZoom.Value = last_zoom;
                 return;
             }
+            last_zoom = (int)numUpDownZoom.Value;
 
             // Display image in PictureBox.
             using (MemoryStream ms = new MemoryStream(image))

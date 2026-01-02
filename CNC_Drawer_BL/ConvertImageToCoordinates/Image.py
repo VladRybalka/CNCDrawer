@@ -66,9 +66,25 @@ def image_drawing_optimization(black_cords):
             black_cords.append(j)
     return black_cords
 
+#region -==- Get Time -==-
+
 def get_time(arduino_cords):
-    count = (arduino_cords.count("up") + arduino_cords.count("dp")) * 1.1
-    hour = int(count / 3600)
-    minute = int(count / 60) - hour * 60
-    second = int(count - minute * 60 - hour * 3600)
+    # 1.1 time for up or down pen
+    # 0.002 time for 1 step
+    count_seconds = (arduino_cords.count("up") + arduino_cords.count("dp")) * 1.1
+    count_seconds = len(arduino_cords) * 1.1
+    count_seconds = count_seconds + get_count_steps(arduino_cords) * 0.002
+    get_count_steps(arduino_cords)
+    hour = int(count_seconds / 3600)
+    minute = int(count_seconds / 60) - hour * 60
+    second = int(count_seconds - minute * 60 - hour * 3600)
     return str(hour) + ":" + str(minute) + ":" + str(second)
+
+def get_count_steps(arduino_cords):
+    count_steps = 0
+    for i in arduino_cords:
+        if i != "up" and i != "dp":
+            count_steps += int(i[1:])
+    return count_steps
+
+#endregion

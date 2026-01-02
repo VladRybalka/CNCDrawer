@@ -125,7 +125,6 @@
             0,
             0,
             0});
-            this.numUpDownFilter.ValueChanged += new System.EventHandler(this.numUpDownFilter_ValueChanged);
             this.numUpDownFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numUpDownFilter_KeyDown);
             // 
             // btn_exit
@@ -182,7 +181,6 @@
             0,
             0,
             0});
-            this.numUpDownZoom.ValueChanged += new System.EventHandler(this.numUpDownZoom_ValueChanged);
             this.numUpDownZoom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numUpDownZoom_KeyDown);
             // 
             // btn_help
