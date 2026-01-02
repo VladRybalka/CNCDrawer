@@ -1,0 +1,11 @@
+COM. Com. COM port is a port that is created when connecting the Arduino controller. Through it, information is transferred to the controller.
+
+IMPORTANT! Before clicking the Start button, make sure that you have selected the COM port that Arduino created, you can check this via:
+Control Panel => Device Manager => Ports (COM and LPT). If there is none, or the Arduino is not connected, or you need to download the driver, which is located in the Driver folder, which you could see when you opened the CNCDrawer folder, in it you need to open the CH341SER folder and run Setup.exe, in which click Install.	
+
+Browse. The Browse button is used to select an image from your computer. It is advisable to use the PNG extension, otherwise there may be inaccuracies or errors when processing the image.	
+Zoom. The image magnification factor by increasing the length of each line and accordingly increasing the Width and Height of the image by this factor (Width*Zoom, Height*Zoom).	
+Filter. A coefficient that is needed for more accurate image processing. Since each image may contain gray pixels that represent "noise", this filter helps to reject them. The value sets the boundaries of white and black, i.e. everything less than this value is black, and everything more than it is white.	
+Start. Start drawing, which will be performed as long as the image is drawn, in order to stop it you need to close the application.
+
+IMPORTANT! Before clicking on the Start button, make sure that you have selected the COM port that Arduino created, you can see this through: Control Panel => Device Manager => Ports (COM and LPT). If there is none, or the Arduino is not connected, or you need to download the driver, which is located in the Driver folder, which you could see when you opened the CNCDrawer folder, in it you need to open the CH341SER folder and run Setup.exe, in which click Install.	
