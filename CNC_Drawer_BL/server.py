@@ -29,7 +29,11 @@ def convert(path, zoom, filter):
 # Returns the time it took to draw the image.
 @app.route('/time')
 def time():
-    return str(ConvertToCoord.get_time(StartArduino.Arduino.arduino))
+    return ConvertToCoord.get_time(StartArduino.Arduino.arduino)
+
+@app.route('/end_time')
+def end_time():
+    return ConvertToCoord.get_end_time()
 
 #endregion
 

@@ -69,14 +69,16 @@ def image_drawing_optimization(black_cords):
 #region -==- Get Time -==-
 
 def get_time(arduino_cords):
+    global hour, minute, second
+
     # 0.1 delay between commands.
     # 0.002 time for 1 step.
     count_seconds = len(arduino_cords) * 0.1
     count_seconds = count_seconds + get_count_steps(arduino_cords) * 0.002
-    get_count_steps(arduino_cords)
-    hour = int(count_seconds / 3600)
-    minute = int(count_seconds / 60) - hour * 60
-    second = int(count_seconds - minute * 60 - hour * 3600)
+
+    hour = int(count_seconds / 3600)    # Count hour.
+    minute = int(count_seconds / 60) - hour * 60    # Count minute.
+    second = int(count_seconds - minute * 60 - hour * 3600)    # Count second.
     return str(hour) + ":" + str(minute) + ":" + str(second)
 
 def get_count_steps(arduino_cords):
@@ -85,5 +87,12 @@ def get_count_steps(arduino_cords):
         if i != "up" and i != "dp":
             count_steps += int(i[1:])
     return count_steps
+
+def get_end_time():
+    now = datetime.datetime.now() + datetime.timedelta(hours=hour, minutes=minute, seconds=second)
+    hour_end = now.hour
+    minute_end = now.minute
+    second_end = now.second
+    return str(hour_end) + ":" + str(minute_end) + ":" + str(second_end)
 
 #endregion
