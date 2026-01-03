@@ -5,8 +5,9 @@ import time
 arduino = []
 
 def get_com_ports():
-    com_ports = serial.tools.list_ports.comports()
-    com_ports_name = []
+    com_ports = serial.tools.list_ports.comports()  # Get list of available COM-ports on PC.
+    com_ports_name = []  # List of names these COM-ports.
+    # Goes through the list and add in "com_ports_name" the name of these COM-ports
     for com_port in com_ports:
         com_ports_name.append(com_port.name)
 
