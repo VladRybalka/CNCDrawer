@@ -33,13 +33,13 @@ def convert_coords_in_arduino_commands(black_cords):
 
 def send_commands_to_arduino(com):
     # init com-port
-    tm = 1    # Timeout
-    s = serial.Serial(port="COM4", baudrate=1000000, timeout=tm, bytesize=8, stopbits=1)
+    s = serial.Serial(port="COM4", baudrate=1000000, timeout=1, bytesize=8, stopbits=1)
+    time.sleep(1)
 
     print("serial Init")
     for i in arduino:
         print("start")
-        time.sleep(tm)
+        time.sleep(0.1)
         s.write(i.encode("cp1251"))
 
         while 1:

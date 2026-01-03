@@ -69,10 +69,9 @@ def image_drawing_optimization(black_cords):
 #region -==- Get Time -==-
 
 def get_time(arduino_cords):
-    # 1.1 time for up or down pen
-    # 0.002 time for 1 step
-    count_seconds = (arduino_cords.count("up") + arduino_cords.count("dp")) * 1.1
-    count_seconds = len(arduino_cords) * 1.1
+    # 0.1 delay between commands.
+    # 0.002 time for 1 step.
+    count_seconds = len(arduino_cords) * 0.1
     count_seconds = count_seconds + get_count_steps(arduino_cords) * 0.002
     get_count_steps(arduino_cords)
     hour = int(count_seconds / 3600)
