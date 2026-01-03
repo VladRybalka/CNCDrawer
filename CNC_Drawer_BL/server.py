@@ -31,6 +31,7 @@ def convert(path, zoom, filter):
 def time():
     return ConvertToCoord.get_time(StartArduino.Arduino.arduino)
 
+# Return the end time.
 @app.route('/end_time')
 def end_time():
     return ConvertToCoord.get_end_time()
