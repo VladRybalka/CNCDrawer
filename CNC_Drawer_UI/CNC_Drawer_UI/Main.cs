@@ -69,6 +69,14 @@ namespace CNC_Drawer_UI
                 await client.GetAsync($"http://127.0.0.1:5000/start/{cBCom.Text}");
             }
             timerCOMPortUpdate.Start();
+
+            string time;
+            string request = "http://127.0.0.1:5000/end_time";
+            using (HttpClient client = new HttpClient())
+            {
+                time = await client.GetStringAsync(request);
+            }
+            lbl_time.Text = time;
         }
 
         // Help button click.
