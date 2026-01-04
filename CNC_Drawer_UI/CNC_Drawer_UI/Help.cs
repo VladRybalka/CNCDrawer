@@ -40,7 +40,7 @@ namespace CNC_Drawer_UI
         private void SetTextsInTextBoxes()
         {
             int cutLengthCom = 5;
-            int cutLengthBrowse = 12;
+            int cutLengthBrowse = 10;
             int cutLengthZoom = 8;
             int cutLengthFilter = 10;
             int cutLengthStart = 9;
