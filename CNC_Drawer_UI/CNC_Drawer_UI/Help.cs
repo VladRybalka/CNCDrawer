@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CNC_Drawer_UI
@@ -22,6 +16,7 @@ namespace CNC_Drawer_UI
 
         private void btn_En_Click(object sender, EventArgs e)
         {
+            // Change language on English.
             language = "eng";
             btn_En.Enabled = false;
             btn_Ukr.Enabled = true;
@@ -30,15 +25,16 @@ namespace CNC_Drawer_UI
 
         private void btn_Ukr_Click(object sender, EventArgs e)
         {
+            // Change language on Ukrainian.
             language = "ukr";
             btn_Ukr.Enabled = false;
             btn_En.Enabled = true;
             SetTextsInTextBoxes();
         }
 
-        // TODO: Дописать про драйвер.
         private void SetTextsInTextBoxes()
         {
+            // Indents for correct output
             int cutLengthCom = 5;
             int cutLengthBrowse = 10;
             int cutLengthZoom = 8;
@@ -48,12 +44,17 @@ namespace CNC_Drawer_UI
             if (language == "eng")
             {
                 string text;
+
+                // Read File with Help on English.
                 using(StreamReader reader = new StreamReader(path + "\\src\\Help_texts\\Help_Eng.txt"))
                 {
                     text = reader.ReadToEnd();
                 }
+
+                // Splits into tabs.
                 string[] paragraphs = text.Split(new string[] { "\t" }, StringSplitOptions.None);
 
+                // Changes the explanation text in labels.
                 lbl_Com.Text = paragraphs[0].Substring(cutLengthCom, paragraphs[0].Length - cutLengthCom);
                 lbl_Browse.Text = paragraphs[1].Substring(cutLengthBrowse, paragraphs[1].Length - cutLengthBrowse);
                 lbl_Zoom.Text = paragraphs[2].Substring(cutLengthZoom, paragraphs[2].Length - cutLengthZoom);
@@ -63,11 +64,17 @@ namespace CNC_Drawer_UI
             else if(language == "ukr")
             {
                 string text;
+
+                // Read File with Help on Ukrainian.
                 using (StreamReader reader = new StreamReader(path + "\\src\\Help_texts\\Help_Ukr.txt"))
                 {
                     text = reader.ReadToEnd();
                 }
+
+                // Splits into tabs.
                 string[] paragraphs = text.Split(new string[] { "\t" }, StringSplitOptions.None);
+
+                // Changes the explanation text in labels.
                 lbl_Com.Text = paragraphs[0].Substring(cutLengthCom, paragraphs[0].Length - cutLengthCom);
                 lbl_Browse.Text = paragraphs[1].Substring(cutLengthBrowse, paragraphs[1].Length - cutLengthBrowse);
                 lbl_Zoom.Text = paragraphs[2].Substring(cutLengthZoom, paragraphs[2].Length - cutLengthZoom);
