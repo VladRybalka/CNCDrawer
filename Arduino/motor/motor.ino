@@ -21,127 +21,118 @@
  **********************************************************************************
  */
 
-/** Скетч керування двигунами 2D плоттера 
+/** 2D plotter motor control driver
 */
 
-#include <Servo.h>
-Servo myServo;
+#include <Servo.h>    // Import a library for servo control.
+Servo myServo;        // Initialization servo contol.
 
-// № пінів двигуна 1:
-#define step_1 A0    // крокові імпульси
-#define dir_1 A1     // напрямок обертання
-#define enable_1 38  // вмикання
+// pins of the first engine:
+#define step_1 A0    // step pulses.
+#define dir_1 A1     // direction of rotation.
+#define enable_1 38  // inclusion.
 
-// № пінів двигуна 1:
-#define step_2 A6    // крокові імпульси
-#define dir_2 A7     // напрямок обертання
-#define enable_2 A2  // вмикання
+// pins of the second engine:
+#define step_2 A6    // step pulses.
+#define dir_2 A7     // direction of rotation.
+#define enable_2 A2  // inclusion.
 
-// для сервоприводу:
-#define servo_control 11     // № піну керування
-#define servo_up 15  // команда "підняти олівець"
-#define servo_down 30  // команда "опустити олівець"
+// pins of the servo:
+#define servo_control_pin 11     // servo digital pin number.
+#define servo_up_command 15          // servo degrees for raised pencil.
+#define servo_down_command 30        // servo degrees for lowered pencil.
 
-int speed = 2000;    // швидкість руху
+int speed = 2000;
 
 void setup() {
-  // значення для сервоприводу: 30 - опустити, 15 - підняти.
-  myServo.attach(servo_control);  // № піна для сервоприводу
-  myServo.write(servo_up);
+  myServo.attach(servo_control_pin);    // servo initialization.
+  myServo.write(servo_up_command);
 
-  // ініціалізація пінів двигуна 1.
+  // initialization of the first engine pins.
   pinMode(step_1, OUTPUT);
   pinMode(dir_1, OUTPUT);
   pinMode(enable_1, OUTPUT);
 
-  // ініціалізація пінів двигуна 2.
+  // initialization of the second engine pins.
   pinMode(step_2, OUTPUT);
   pinMode(dir_2, OUTPUT);
   pinMode(enable_2, OUTPUT);
 
-  digitalWrite(enable_1, HIGH);  // вимкнути
-  digitalWrite(enable_2, HIGH);  // вимкнути
+  digitalWrite(enable_1, HIGH);  // turn off.
+  digitalWrite(enable_2, HIGH);  // turn off.
   
-  Serial.begin(1000000); // встановлення швидкості COM порту 9600 бод.
+  Serial.begin(1000000); // Set COM-port speed 1 million bouds. (0,5 million is enough, but to be on the safe side it’s better to do it this way)
   Serial.setTimeout(1);
 }
 
-// рухати олівець на "len" кроків вгору
+// move the pencil forward by "len" steps.
 void up(int len)
 {
-  digitalWrite(dir_1, LOW);
+  digitalWrite(dir_1, LOW);    // Set direction.
   for(int i = 0; i < len; i++)
   {
-    digitalWrite(enable_1, LOW);
-    delayMicroseconds(speed);
-    digitalWrite(step_1, HIGH);
-    //delayMicroseconds(speed);
-    digitalWrite(step_1, LOW);
-    //delayMicroseconds(speed);
-    digitalWrite(enable_1, HIGH);
+    digitalWrite(enable_1, LOW);     // Turn on.
+    delayMicroseconds(speed);        // Delay between step.
+    digitalWrite(step_1, HIGH);      // Step ON.
+    digitalWrite(step_1, LOW);       // Step OFF.
+    digitalWrite(enable_1, HIGH);    // Turn off.
   }
 }
 
-// рухати олівець на "len" кроків вниз.
+// move the pencil back by "len" steps.
 void down(int len)
 {
-  digitalWrite(dir_1, HIGH);
+  digitalWrite(dir_1, HIGH);    // Set direction.
   for(int i = 0; i < len; i++)
   {
-    digitalWrite(enable_1, LOW);
-    delayMicroseconds(speed);
-    digitalWrite(step_1, HIGH);
-    //delayMicroseconds(speed);
-    digitalWrite(step_1, LOW);
-    //delayMicroseconds(speed);
-    digitalWrite(enable_1, HIGH);
+    digitalWrite(enable_1, LOW);     // Turn on.
+    delayMicroseconds(speed);        // Delay between step.
+    digitalWrite(step_1, HIGH);      // Step ON.
+    digitalWrite(step_1, LOW);       // Step OFF.
+    digitalWrite(enable_1, HIGH);    // Turn off.
   }
 }
 
-// рухати олівець на "len" кроків праворуч.
+// move the pencil to the right by "len" steps.
 void right(int len)
 {
-  digitalWrite(dir_2, LOW);
+  digitalWrite(dir_2, LOW);    // Set direction.
   for(int i = 0; i < len; i++)
   {
-    digitalWrite(enable_2, LOW);
-    delayMicroseconds(speed);
-    digitalWrite(step_2, HIGH);
-    //delayMicroseconds(speed);
-    digitalWrite(step_2, LOW);
-    //delayMicroseconds(speed);
-    digitalWrite(enable_2, HIGH);
+    digitalWrite(enable_2, LOW);     // Turn on.
+    delayMicroseconds(speed);        // Delay between step.
+    digitalWrite(step_2, HIGH);      // Step ON.
+    digitalWrite(step_2, LOW);       // Step OFF.
+    digitalWrite(enable_2, HIGH);    // Turn off.
   }
 }
 
-// рухати олівець на "len" кроків ліворуч.
+// move the pencil to the left by "len" steps.
 void left(int len)
 {
-  digitalWrite(dir_2, HIGH);
+  digitalWrite(dir_2, HIGH);    // Set direction.
   for(int i = 0; i < len; i++)
   {
-    digitalWrite(enable_2, LOW);
-    delayMicroseconds(speed);
-    digitalWrite(step_2, HIGH);
-    //delayMicroseconds(speed);
-    digitalWrite(step_2, LOW);
-    //delayMicroseconds(speed);
-    digitalWrite(enable_2, HIGH);
+    digitalWrite(enable_2, LOW);     // Turn on.
+    delayMicroseconds(speed);        // Delay between step.
+    digitalWrite(step_2, HIGH);      // Step ON.
+    digitalWrite(step_2, LOW);       // Step OFF.
+    digitalWrite(enable_2, HIGH);    // Turn off.
   }
 }
 
 void loop() {
   if(Serial.available() > 0)
   {
-    String a = Serial.readString();    // зчитування команди з COM-порту
-    // декодування команди
+    String a = Serial.readString();    // Read command from COM-port.
+    // decoding command
     if(a.substring(0, 2) == "up")
     {
-      myServo.write(servo_up);
+      myServo.write(servo_up_command);
     }
     else if(a.substring(0, 2) == "dp")
     {
-      myServo.write(servo_down);
+      myServo.write(servo_down_command);
     }
     else if(a[0] == 'r')
     {
@@ -164,6 +155,6 @@ void loop() {
       down(len);
     }
 
-    Serial.println(a);    // відправка повідомлення про виконану команду
+    Serial.println(a);    // sending a message about the executed command.
   }
 }
