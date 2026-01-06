@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
 
 namespace CNC_Drawer_UI
 {
@@ -52,6 +51,7 @@ namespace CNC_Drawer_UI
                 }
             }
 
+            // Reset.
             last_zoom = 1;
             numUpDownZoom.Value = 1;
 
@@ -62,14 +62,14 @@ namespace CNC_Drawer_UI
         // Start button click.
         private async void btn_start_Click(object sender, EventArgs e)
         {
-            timerCOMPortUpdate.Stop();
+            timerCOMPortUpdate.Stop();    // Stop COM-ports monitoring.
             using (HttpClient client = new HttpClient())
             {
                 // Send start command, COM port and waits for the end.
                 await client.GetAsync($"http://127.0.0.1:5000/start/{cBCom.Text}");
             }
-            timerCOMPortUpdate.Start();
 
+            // Getting end time hour:minute:second.
             string time;
             string request = "http://127.0.0.1:5000/end_time";
             using (HttpClient client = new HttpClient())
@@ -82,6 +82,7 @@ namespace CNC_Drawer_UI
         // Help button click.
         private void btn_help_Click(object sender, EventArgs e)
         {
+            // Open Help Form
             help_form = new Help();
             help_form.ShowDialog();
         }
@@ -130,11 +131,10 @@ namespace CNC_Drawer_UI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Start COM port update timer.
+            // Start COM port monitoring.
             timerCOMPortUpdate.Start();
 
-            // Add mouse scroll event.
-            panel1.MouseWheel += Mouse_Scroll;
+            panel1.MouseWheel += Mouse_Scroll;    // Add mouse scroll event.
             var p = new DirectoryInfo(Directory.GetCurrentDirectory());    // Get current directory.
             Icon = new Icon(p.Parent.Parent.FullName + "\\src\\Icons\\Main.ico");    // Set form icon.
 #if !DEBUG
