@@ -19,9 +19,9 @@
 # * SOFTWARE.                                                                      *
 # **********************************************************************************
 
-# *****************************************
-#
-# *****************************************
+# ************************************
+# script for communication UI and Bl *
+# ************************************
 from flask import Flask, send_file
 import json
 import os
@@ -59,6 +59,11 @@ def time():
 @app.route('/end_time')
 def end_time():
     return ConvertToCoord.get_end_time()
+
+# Return size(x, y)
+@app.route('/get_size')
+def get_size():
+    return json.dumps(ConvertToCoord.get_size())
 
 #endregion
 

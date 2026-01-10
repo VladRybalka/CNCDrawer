@@ -24,16 +24,19 @@
 # Script for preparing images for transfer to a plotter #
 # *******************************************************
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageChops
 import os
 import datetime
 
 black_coords = []
+image_size = ()
+
 hour = 0
 minute = 0
 second = 0
 
 def convert_image_in_coords(path, zoom, filter):
+    global image_size
     global black_coords
     input_image = Image.open(path)    # Open image.
 
@@ -70,7 +73,13 @@ def convert_image_in_coords(path, zoom, filter):
                    black_coords[coord+1][0],
                    black_coords[coord+1][1]), width=1, fill="black")
     direct = os.getcwd().replace('\\', '\\\\')
+    a = Image.new("RGB", img.size, "white")
+    diff = ImageChops.difference(a, img)
+    bbox = diff.getbbox()
+    img = img.crop(bbox)
     img.save(f"{direct}\\cash\\cash.PNG")
+
+    image_size = (img.size[0], img.size[1])
 
     return "200"
 
@@ -97,6 +106,17 @@ def image_drawing_optimization(black_coords):
         for j in i:
             black_coords.append(j)
     return black_coords
+
+# Get size
+def get_size():
+    angle_rotate = 1.8  # Rotation angle per one step.
+    diameter = 0.97       # Roller diameter.
+    length = 0.97 * 3.14  # Roller circumference.
+    length_one_step = length / (360 / angle_rotate)
+
+    x = image_size[0] * length_one_step
+    y = image_size[1] * length_one_step
+    return [str(x), str(y)]
 
 #region -==- Get Time -==-
 

@@ -217,6 +217,17 @@ namespace CNC_Drawer_UI
                 time = await client.GetStringAsync(request);
             }
             lbl_time.Text = time;
+
+            // Get size.
+            string size;
+            request = "http://127.0.0.1:5000/get_size";
+            using (HttpClient client = new HttpClient())
+            {
+                size = await client.GetStringAsync(request);
+            }
+            string[] a = JsonConvert.DeserializeObject<string[]>(size);
+            lbl_h.Text = a[0];
+            lbl_v.Text = a[1];
         }
 
         private async void GetComPortsAsynk()

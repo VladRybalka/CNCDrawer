@@ -70,7 +70,7 @@ def convert_coords_in_arduino_commands(black_coords):
 
 def send_commands_to_arduino(com):
     # initialization of com-port
-    s = serial.Serial(port="COM4", baudrate=1000000, timeout=1, bytesize=8, stopbits=1)
+    s = serial.Serial(port=com, baudrate=1000000, timeout=1, bytesize=8, stopbits=1)
     print("serial Init")
     time.sleep(1)    # delay for initialization.
 
