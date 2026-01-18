@@ -40,6 +40,7 @@ namespace CNC_Drawer_UI
             int cutLengthZoom = 8;
             int cutLengthFilter = 10;
             int cutLengthStart = 9;
+            int cutLengthTime = 5;
 
             if (language == "eng")
             {
@@ -60,6 +61,9 @@ namespace CNC_Drawer_UI
                 lbl_Zoom.Text = paragraphs[2].Substring(cutLengthZoom, paragraphs[2].Length - cutLengthZoom);
                 lbl_Filter.Text = paragraphs[3].Substring(cutLengthFilter, paragraphs[3].Length - cutLengthFilter);
                 lbl_Start.Text = paragraphs[4].Substring(cutLengthStart, paragraphs[4].Length - cutLengthStart);
+                lbl_time.Text = paragraphs[5].Substring(1, paragraphs[5].Length - 1);
+                lbl_horizontal.Text = paragraphs[6].Substring(2, paragraphs[6].Length - 2);
+                lbl_vertical.Text = paragraphs[7].Substring(2, paragraphs[7].Length - 2);
             }
             else if(language == "ukr")
             {
@@ -80,6 +84,9 @@ namespace CNC_Drawer_UI
                 lbl_Zoom.Text = paragraphs[2].Substring(cutLengthZoom, paragraphs[2].Length - cutLengthZoom);
                 lbl_Filter.Text = paragraphs[3].Substring(cutLengthFilter, paragraphs[3].Length - cutLengthFilter);
                 lbl_Start.Text = paragraphs[4].Substring(cutLengthStart, paragraphs[4].Length - cutLengthStart);
+                lbl_time.Text = paragraphs[5].Substring(1, paragraphs[5].Length - 1);
+                lbl_horizontal.Text = paragraphs[6].Substring(1, paragraphs[6].Length - 1);
+                lbl_vertical.Text = paragraphs[7].Substring(1, paragraphs[7].Length - 1);
             }
         }
 

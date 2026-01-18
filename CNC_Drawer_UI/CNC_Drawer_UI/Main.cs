@@ -65,6 +65,8 @@ namespace CNC_Drawer_UI
             timerCOMPortUpdate.Stop();    // Stop COM-ports monitoring.
             using (HttpClient client = new HttpClient())
             {
+                client.Timeout = TimeSpan.MaxValue;    // Waiting until a response comes.
+
                 // Send start command, COM port and waits for the end.
                 await client.GetAsync($"http://127.0.0.1:5000/start/{cBCom.Text}");
             }
@@ -183,6 +185,7 @@ namespace CNC_Drawer_UI
             {
                 image = await client.GetByteArrayAsync(request);
             }
+            
 
             // Check if image is too big.
             if (Encoding.UTF8.GetString(image) == "0")

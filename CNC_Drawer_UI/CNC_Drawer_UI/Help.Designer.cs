@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.dfs = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Com = new System.Windows.Forms.Label();
@@ -46,7 +46,13 @@
             this.lbl_Start = new System.Windows.Forms.Label();
             this.btn_En = new System.Windows.Forms.Button();
             this.btn_Ukr = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.lbl_time = new System.Windows.Forms.Label();
+            this.lbl_horizontal = new System.Windows.Forms.Label();
+            this.lbl_vertical = new System.Windows.Forms.Label();
+            this.dfs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -57,21 +63,27 @@
             this.panel4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // dfs
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(18, 16);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1010, 531);
-            this.tabControl1.TabIndex = 0;
+            this.dfs.Controls.Add(this.tabPage1);
+            this.dfs.Controls.Add(this.tabPage2);
+            this.dfs.Controls.Add(this.tabPage3);
+            this.dfs.Controls.Add(this.tabPage4);
+            this.dfs.Controls.Add(this.tabPage5);
+            this.dfs.Controls.Add(this.tabPage6);
+            this.dfs.Controls.Add(this.tabPage7);
+            this.dfs.Controls.Add(this.tabPage8);
+            this.dfs.Location = new System.Drawing.Point(18, 16);
+            this.dfs.Margin = new System.Windows.Forms.Padding(4);
+            this.dfs.Name = "dfs";
+            this.dfs.SelectedIndex = 0;
+            this.dfs.Size = new System.Drawing.Size(1010, 531);
+            this.dfs.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -233,6 +245,60 @@
             this.btn_Ukr.UseVisualStyleBackColor = true;
             this.btn_Ukr.Click += new System.EventHandler(this.btn_Ukr_Click);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.lbl_time);
+            this.tabPage6.Location = new System.Drawing.Point(4, 34);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1002, 493);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Time";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.lbl_horizontal);
+            this.tabPage7.Location = new System.Drawing.Point(4, 34);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1002, 493);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Horizontal";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.lbl_vertical);
+            this.tabPage8.Location = new System.Drawing.Point(4, 34);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(1002, 493);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "Vertical";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // lbl_time
+            // 
+            this.lbl_time.Location = new System.Drawing.Point(23, 14);
+            this.lbl_time.Name = "lbl_time";
+            this.lbl_time.Size = new System.Drawing.Size(957, 464);
+            this.lbl_time.TabIndex = 1;
+            this.lbl_time.Text = "Time";
+            // 
+            // lbl_horizontal
+            // 
+            this.lbl_horizontal.Location = new System.Drawing.Point(23, 14);
+            this.lbl_horizontal.Name = "lbl_horizontal";
+            this.lbl_horizontal.Size = new System.Drawing.Size(957, 464);
+            this.lbl_horizontal.TabIndex = 1;
+            this.lbl_horizontal.Text = "Horizontal";
+            // 
+            // lbl_vertical
+            // 
+            this.lbl_vertical.Location = new System.Drawing.Point(23, 14);
+            this.lbl_vertical.Name = "lbl_vertical";
+            this.lbl_vertical.Size = new System.Drawing.Size(957, 464);
+            this.lbl_vertical.TabIndex = 1;
+            this.lbl_vertical.Text = "Vertical";
+            // 
             // Help
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -240,7 +306,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 630);
             this.Controls.Add(this.btn_Ukr);
             this.Controls.Add(this.btn_En);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.dfs);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -249,7 +315,7 @@
             this.Name = "Help";
             this.Text = "Help";
             this.Load += new System.EventHandler(this.Help_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.dfs.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -260,13 +326,16 @@
             this.panel4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl dfs;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -284,5 +353,11 @@
         private System.Windows.Forms.Label lbl_Start;
         private System.Windows.Forms.Button btn_En;
         private System.Windows.Forms.Button btn_Ukr;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Label lbl_time;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Label lbl_horizontal;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.Label lbl_vertical;
     }
 }

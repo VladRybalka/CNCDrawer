@@ -19,3 +19,9 @@ To make sure:
 - find the desired COM port
 If the COM port is missing, you need to install the COM port driver.
 To do this, open the CNCDrawer\Driver\CH341SER folder and run Setup.exe and click Install.
+	
+Time. When selecting a drawing, it shows the approximate time it will take to draw it. When you click start, it shows when the drawing will be completed.
+	
+Horizontal. The size of the picture in cm horizontally.
+	
+Vertical. The size of the picture in cm vertically.
