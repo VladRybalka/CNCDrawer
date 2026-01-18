@@ -109,10 +109,7 @@ def image_drawing_optimization(black_coords):
 
 # Get size
 def get_size():
-    angle_rotate = 1.8  # Rotation angle per one step.
-    diameter = 0.97       # Roller diameter.
-    length = 0.97 * 3.14  # Roller circumference.
-    length_one_step = length / (360 / angle_rotate)
+    length_one_step = 1/100  # Rotation angle per one step.
 
     x = image_size[0] * length_one_step
     y = image_size[1] * length_one_step
