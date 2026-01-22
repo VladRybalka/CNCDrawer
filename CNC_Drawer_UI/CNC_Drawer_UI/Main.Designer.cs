@@ -39,7 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cBCom = new System.Windows.Forms.ComboBox();
             this.timerCOMPortUpdate = new System.Windows.Forms.Timer(this.components);
-            this.numUpDownZoom = new System.Windows.Forms.NumericUpDown();
             this.btn_help = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,15 +47,20 @@
             this.lbl_time = new System.Windows.Forms.Label();
             this.lbl_h = new System.Windows.Forms.Label();
             this.lbl_v = new System.Windows.Forms.Label();
+            this.numUpDownZoom = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkConnection = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownFilter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownZoom)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownZoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_browse
             // 
-            this.btn_browse.Location = new System.Drawing.Point(865, 50);
+            this.btn_browse.Location = new System.Drawing.Point(865, 81);
             this.btn_browse.Margin = new System.Windows.Forms.Padding(4);
             this.btn_browse.Name = "btn_browse";
             this.btn_browse.Size = new System.Drawing.Size(212, 71);
@@ -77,7 +81,7 @@
             // 
             // btn_start
             // 
-            this.btn_start.Location = new System.Drawing.Point(865, 302);
+            this.btn_start.Location = new System.Drawing.Point(865, 333);
             this.btn_start.Margin = new System.Windows.Forms.Padding(4);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(212, 71);
@@ -89,7 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(864, 134);
+            this.label1.Location = new System.Drawing.Point(864, 165);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 25);
             this.label1.TabIndex = 3;
@@ -98,7 +102,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(864, 169);
+            this.label2.Location = new System.Drawing.Point(864, 200);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 25);
             this.label2.TabIndex = 5;
@@ -106,7 +110,7 @@
             // 
             // numUpDownFilter
             // 
-            this.numUpDownFilter.Location = new System.Drawing.Point(938, 164);
+            this.numUpDownFilter.Location = new System.Drawing.Point(938, 195);
             this.numUpDownFilter.Maximum = new decimal(new int[] {
             254,
             0,
@@ -129,7 +133,7 @@
             // 
             // btn_exit
             // 
-            this.btn_exit.Location = new System.Drawing.Point(865, 460);
+            this.btn_exit.Location = new System.Drawing.Point(865, 491);
             this.btn_exit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(212, 71);
@@ -160,32 +164,9 @@
             this.timerCOMPortUpdate.Interval = 1000;
             this.timerCOMPortUpdate.Tick += new System.EventHandler(this.timerCOMPortUpdate_Tick);
             // 
-            // numUpDownZoom
-            // 
-            this.numUpDownZoom.Location = new System.Drawing.Point(938, 129);
-            this.numUpDownZoom.Maximum = new decimal(new int[] {
-            254,
-            0,
-            0,
-            0});
-            this.numUpDownZoom.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownZoom.Name = "numUpDownZoom";
-            this.numUpDownZoom.Size = new System.Drawing.Size(139, 30);
-            this.numUpDownZoom.TabIndex = 10;
-            this.numUpDownZoom.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownZoom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numUpDownZoom_KeyDown);
-            // 
             // btn_help
             // 
-            this.btn_help.Location = new System.Drawing.Point(865, 381);
+            this.btn_help.Location = new System.Drawing.Point(865, 412);
             this.btn_help.Margin = new System.Windows.Forms.Padding(4);
             this.btn_help.Name = "btn_help";
             this.btn_help.Size = new System.Drawing.Size(212, 71);
@@ -206,7 +187,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(864, 204);
+            this.label4.Location = new System.Drawing.Point(864, 235);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 25);
             this.label4.TabIndex = 13;
@@ -215,7 +196,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(864, 239);
+            this.label5.Location = new System.Drawing.Point(864, 270);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 25);
             this.label5.TabIndex = 14;
@@ -224,7 +205,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(864, 273);
+            this.label6.Location = new System.Drawing.Point(864, 304);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 25);
             this.label6.TabIndex = 15;
@@ -233,7 +214,7 @@
             // lbl_time
             // 
             this.lbl_time.AutoSize = true;
-            this.lbl_time.Location = new System.Drawing.Point(965, 204);
+            this.lbl_time.Location = new System.Drawing.Point(965, 235);
             this.lbl_time.Name = "lbl_time";
             this.lbl_time.Size = new System.Drawing.Size(57, 25);
             this.lbl_time.TabIndex = 16;
@@ -242,7 +223,7 @@
             // lbl_h
             // 
             this.lbl_h.AutoSize = true;
-            this.lbl_h.Location = new System.Drawing.Point(965, 239);
+            this.lbl_h.Location = new System.Drawing.Point(965, 270);
             this.lbl_h.Name = "lbl_h";
             this.lbl_h.Size = new System.Drawing.Size(23, 25);
             this.lbl_h.TabIndex = 17;
@@ -251,17 +232,66 @@
             // lbl_v
             // 
             this.lbl_v.AutoSize = true;
-            this.lbl_v.Location = new System.Drawing.Point(965, 273);
+            this.lbl_v.Location = new System.Drawing.Point(965, 304);
             this.lbl_v.Name = "lbl_v";
             this.lbl_v.Size = new System.Drawing.Size(23, 25);
             this.lbl_v.TabIndex = 18;
             this.lbl_v.Text = "0";
+            // 
+            // numUpDownZoom
+            // 
+            this.numUpDownZoom.Location = new System.Drawing.Point(938, 159);
+            this.numUpDownZoom.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numUpDownZoom.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownZoom.Name = "numUpDownZoom";
+            this.numUpDownZoom.Size = new System.Drawing.Size(139, 30);
+            this.numUpDownZoom.TabIndex = 19;
+            this.numUpDownZoom.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownZoom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numUpDownZoom_KeyDown);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(864, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(118, 25);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Connection:";
+            // 
+            // checkConnection
+            // 
+            this.checkConnection.Interval = 10;
+            this.checkConnection.Tick += new System.EventHandler(this.checkConnection_Tick);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Location = new System.Drawing.Point(954, 45);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox2.TabIndex = 21;
+            this.pictureBox2.TabStop = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 755);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.numUpDownZoom);
             this.Controls.Add(this.lbl_v);
             this.Controls.Add(this.lbl_h);
             this.Controls.Add(this.lbl_time);
@@ -270,7 +300,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_help);
-            this.Controls.Add(this.numUpDownZoom);
             this.Controls.Add(this.cBCom);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_exit);
@@ -290,8 +319,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownFilter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownZoom)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownZoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,7 +339,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cBCom;
         private System.Windows.Forms.Timer timerCOMPortUpdate;
-        private System.Windows.Forms.NumericUpDown numUpDownZoom;
         private System.Windows.Forms.Button btn_help;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
@@ -318,6 +347,10 @@
         private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.Label lbl_h;
         private System.Windows.Forms.Label lbl_v;
+        private System.Windows.Forms.NumericUpDown numUpDownZoom;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer checkConnection;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

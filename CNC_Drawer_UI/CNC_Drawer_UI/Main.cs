@@ -35,6 +35,21 @@ namespace CNC_Drawer_UI
             GetComPortsAsynk();
         }
 
+        // Check COM-port connection.
+        private void checkConnection_Tick(object sender, EventArgs e)
+        {
+            if (cBCom.Items.Count > 0)
+            {
+                btn_start.Enabled = true;
+                pictureBox2.BackColor = Color.LimeGreen;
+            }
+            else
+            {
+                btn_start.Enabled = false;
+                pictureBox2.BackColor = Color.Red;
+            }
+        }
+
         #endregion
 
         #region -==- Buttons -==-
@@ -62,15 +77,6 @@ namespace CNC_Drawer_UI
         // Start button click.
         private async void btn_start_Click(object sender, EventArgs e)
         {
-            timerCOMPortUpdate.Stop();    // Stop COM-ports monitoring.
-            using (HttpClient client = new HttpClient())
-            {
-                client.Timeout = TimeSpan.MaxValue;    // Waiting until a response comes.
-
-                // Send start command, COM port and waits for the end.
-                await client.GetAsync($"http://127.0.0.1:5000/start/{cBCom.Text}");
-            }
-
             // Getting end time hour:minute:second.
             string time;
             string request = "http://127.0.0.1:5000/end_time";
@@ -79,6 +85,17 @@ namespace CNC_Drawer_UI
                 time = await client.GetStringAsync(request);
             }
             lbl_time.Text = time;
+
+            timerCOMPortUpdate.Stop();    // Stop COM-ports monitoring.
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromSeconds(86400);    // Waiting until a response comes.
+
+                // Send start command, COM port and waits for the end.
+                await client.GetAsync($"http://127.0.0.1:5000/start/{cBCom.Text}");
+            }
+
+            timerCOMPortUpdate.Start();
         }
 
         // Help button click.
@@ -135,6 +152,9 @@ namespace CNC_Drawer_UI
         {
             // Start COM port monitoring.
             timerCOMPortUpdate.Start();
+
+            // Start check COM-port connection.
+            checkConnection.Start();
 
             panel1.MouseWheel += Mouse_Scroll;    // Add mouse scroll event.
             var p = new DirectoryInfo(Directory.GetCurrentDirectory());    // Get current directory.
@@ -300,5 +320,7 @@ namespace CNC_Drawer_UI
         }
 
         #endregion
+
+        
     }
 }
